@@ -4,6 +4,7 @@ export interface User {
   email: string;
   displayName: string;
   photoURL: string;
+  bio: string;
   createdAt: string;
   updatedAt: string;
 }

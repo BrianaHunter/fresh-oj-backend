@@ -8,6 +8,7 @@ const userSchema = new Schema<User>(
     email: { type: String, required: true, unique: true },
     displayName: { type: String, required: true },
     photoURL: { type: String },
+    bio: { type: String },
   },
   { timestamps: true }
 );
