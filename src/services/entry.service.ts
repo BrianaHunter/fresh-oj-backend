@@ -32,7 +32,7 @@ async function deleteEntry(id: string) {
   return await entryModel.findByIdAndDelete(id);
 }
 
-export const usersService = {
+export const entryService = {
   getEntries,
   getEntry,
   getEntryByUserId,
