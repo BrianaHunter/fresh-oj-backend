@@ -5,6 +5,10 @@ import { entryModel } from "../models/entry.model";
 //   const entries = await entryModel.find().lean();
 //   return entries;
 // }
+async function getEntry(id: string) {
+  const entry = await entryModel.findById(id).lean();
+  return entry;
+}
 
 async function getEntries(userId: string) {
   const entries = await entryModel
@@ -36,6 +40,7 @@ async function deleteEntry(id: string) {
 }
 
 export const entryService = {
+  getEntry,
   getEntries,
   getEntryByUserId,
   addEntry,

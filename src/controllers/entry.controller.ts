@@ -3,7 +3,7 @@ import { entryService } from "../services/entry.service";
 
 export async function getEntries(req: Request, res: Response) {
   try {
-    const entries = await entryService.getEntries();
+    const entries = await entryService.getEntries(req.params.id);
     return res.status(200).json(entries);
   } catch (error) {
     console.log(error);
