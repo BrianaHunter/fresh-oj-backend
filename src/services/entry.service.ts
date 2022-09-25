@@ -1,14 +1,17 @@
 import { Entry } from "../types/entry.types";
 import { entryModel } from "../models/entry.model";
 
-async function getEntries() {
-  const entries = await entryModel.find();
-  return entries;
-}
+// async function getEntries() {
+//   const entries = await entryModel.find().lean();
+//   return entries;
+// }
 
-async function getEntry(id: string) {
-  const entry = await entryModel.findById(id);
-  return entry;
+async function getEntries(userId: string) {
+  const entries = await entryModel
+    .find({ userId })
+    .sort({ createdAt: "desc" })
+    .lean();
+  return entries;
 }
 
 async function getEntryByUserId(userId: string) {
@@ -34,7 +37,6 @@ async function deleteEntry(id: string) {
 
 export const entryService = {
   getEntries,
-  getEntry,
   getEntryByUserId,
   addEntry,
   updateEntry,
