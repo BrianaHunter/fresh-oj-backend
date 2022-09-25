@@ -7,7 +7,7 @@ import {
   deleteEntry,
 } from "../controllers/entry.controller";
 
-export const userRouter = express.Router();
+export const entryRouter = express.Router();
 
-userRouter.route("/").get(getEntries).post(addEntry);
-userRouter.route("/:id").get(getEntry).patch(updateEntry).delete(deleteEntry);
+entryRouter.route("/").get(getEntries).post(addEntry);
+entryRouter.route("/:id").get(getEntry).patch(updateEntry).delete(deleteEntry);
