@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { moodService } from "../services/mood.service";
 
-export async function getMoods(req: Request, res: Response) {
+export async function getUsers(req: Request, res: Response) {
   try {
     const moods = await moodService.getMoods();
     return res.status(200).json(moods);
@@ -22,7 +22,7 @@ export async function getMood(req: Request, res: Response) {
   }
 }
 
-export async function addMood(req: Request, res: Response) {
+export async function addUser(req: Request, res: Response) {
   try {
     const newMood = await moodService.addMood(req.body);
     return res.status(201).json(newMood);
@@ -32,7 +32,7 @@ export async function addMood(req: Request, res: Response) {
   }
 }
 
-export async function updateMood(req: Request, res: Response) {
+export async function updateUser(req: Request, res: Response) {
   try {
     const updatedMood = await moodService.updateMood(req.params.id, req.body);
     return res.status(200).json(updatedMood);
@@ -42,7 +42,7 @@ export async function updateMood(req: Request, res: Response) {
   }
 }
 
-export async function deleteMood(req: Request, res: Response) {
+export async function deleteUser(req: Request, res: Response) {
   try {
     await moodService.deleteMood(req.params.id);
     return res.sendStatus(204);
