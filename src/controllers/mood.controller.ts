@@ -1,21 +1,21 @@
 import { Request, Response } from "express";
-import { MoodService } from "../services/mood.service";
+import { moodService } from "../services/mood.service";
 
 export async function getUsers(req: Request, res: Response) {
   try {
-    const users = await usersService.getUsers();
-    return res.status(200).json(users);
+    const moods = await moodService.getMoods();
+    return res.status(200).json(moods);
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
   }
 }
 
-export async function getUser(req: Request, res: Response) {
+export async function getMood(req: Request, res: Response) {
   try {
-    const user = await usersService.getUser(req.params.id);
-    if (!user) return res.status(404).json("User not found");
-    return res.status(200).json(user);
+    const mood = await moodService.getMood(req.params.id);
+    if (!mood) return res.status(404).json("Mood not found");
+    return res.status(200).json(mood);
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
@@ -24,8 +24,8 @@ export async function getUser(req: Request, res: Response) {
 
 export async function addUser(req: Request, res: Response) {
   try {
-    const newUser = await usersService.addUser(req.body);
-    return res.status(201).json(newUser);
+    const newMood = await moodService.addMood(req.body);
+    return res.status(201).json(newMood);
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
@@ -34,8 +34,8 @@ export async function addUser(req: Request, res: Response) {
 
 export async function updateUser(req: Request, res: Response) {
   try {
-    const updatedUser = await usersService.updateUser(req.params.id, req.body);
-    return res.status(200).json(updatedUser);
+    const updatedMood = await moodService.updateMood(req.params.id, req.body);
+    return res.status(200).json(updatedMood);
   } catch (error) {
     console.log(error);
     return res.status(500).json(error);
@@ -44,7 +44,7 @@ export async function updateUser(req: Request, res: Response) {
 
 export async function deleteUser(req: Request, res: Response) {
   try {
-    await usersService.deleteUser(req.params.id);
+    await moodService.deleteMood(req.params.id);
     return res.sendStatus(204);
   } catch (error) {}
 }
