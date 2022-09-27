@@ -4,6 +4,7 @@ import { authService } from "../services/auth.service";
 export async function login(req: Request, res: Response) {
   try {
     const user = await authService.login(req.query.uid as string);
+    console.log(user);
     if (!user) return res.status(404).json("User not found");
     return res.status(200).json(user);
   } catch (error) {
