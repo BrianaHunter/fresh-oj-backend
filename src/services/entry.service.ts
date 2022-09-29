@@ -10,7 +10,11 @@ async function getEntry(id: string) {
   return entry;
 }
 
-async function getEntries(userId: string) {
+async function getEntries(
+  userId: string
+  // startDate?: string,
+  // endDate?: string
+) {
   const entries = await entryModel
     .find({ userId })
     .sort({ createdAt: "desc" })
