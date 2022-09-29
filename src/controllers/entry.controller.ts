@@ -3,7 +3,12 @@ import { entryService } from "../services/entry.service";
 
 export async function getEntries(req: Request, res: Response) {
   try {
-    const entries = await entryService.getEntries(req.query.userId as string);
+    // if (req.query.startDate)
+    const entries = await entryService.getEntries(
+      req.query.userId as string
+      // req.query.startDate as string,
+      // req.query.endDate as string
+    );
     return res.status(200).json(entries);
   } catch (error) {
     console.log(error);
