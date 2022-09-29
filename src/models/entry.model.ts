@@ -6,7 +6,7 @@ const entrySchema = new Schema<Entry>(
   {
     userId: { type: String, required: true },
     dateAdded: { type: String, required: true },
-    title: { type: String, required: true },
+    // title: { type: String, required: true },
     content: { type: String, required: true },
     mood: { type: String, required: true },
   },
