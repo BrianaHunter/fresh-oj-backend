@@ -1,5 +1,6 @@
 import { Entry } from "../types/entry.types";
 import { entryModel } from "../models/entry.model";
+import dayjs from "dayjs";
 
 // async function getEntries() {
 //   const entries = await entryModel.find().lean();
@@ -10,13 +11,15 @@ async function getEntry(id: string) {
   return entry;
 }
 
-async function getEntries(
-  userId: string
-  // startDate?: string,
-  // endDate?: string
-) {
+async function getEntries(userId: string, date?: string) {
+  let query = {};
+  if (dayjs(date).isValid()) {
+    query = { userId, dateAdded: date };
+  } else {
+    query = { userId };
+  }
   const entries = await entryModel
-    .find({ userId })
+    .find(query)
     .sort({ createdAt: "desc" })
     .lean();
   return entries;
