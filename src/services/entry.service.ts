@@ -13,7 +13,7 @@ async function getEntry(id: string) {
 
 async function getEntries(userId: string, date?: string) {
   let query = {};
-  if (dayjs(date).isValid()) {
+  if (date && dayjs(date).isValid()) {
     query = { userId, dateAdded: date };
   } else {
     query = { userId };
@@ -22,6 +22,7 @@ async function getEntries(userId: string, date?: string) {
     .find(query)
     .sort({ createdAt: "desc" })
     .lean();
+  console.log(entries?.at(0));
   return entries;
 }
 
