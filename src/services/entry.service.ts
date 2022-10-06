@@ -22,7 +22,6 @@ async function getEntries(userId: string, date?: string) {
     .find(query)
     .sort({ createdAt: "desc" })
     .lean();
-  console.log(entries?.at(0));
   return entries;
 }
 
